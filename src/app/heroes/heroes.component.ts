@@ -22,8 +22,13 @@ export class HeroesComponent implements OnInit {
   }
 
   getHeroes(): void {
-    this.heroes = this.heroService.getHeroes();
-
+    // this.heroes = this.heroService.getHeroes(); synchronous signature
+    
+    /**
+     * This asynchronous approach will work when the HeroService requests heroes from the server
+     */
+    this.heroService.getHeroes()
+      .subscribe(heroes => this.heroes = heroes); // asynchronous signature
   }
 
 }
